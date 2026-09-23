@@ -2,24 +2,24 @@
 
 ## Logging
 
-- Fields berguna: timestamp, level, service, request_id, action, outcome
-- Error: pesan + kelas error; stack hanya di non-production atau sink terlindungi
-- Jangan log body penuh yang berisi kredensial
+- Useful fields: timestamp, level, service, request_id, action, outcome
+- Error: message + error class; stack traces only in non-production or protected sinks
+- Do not log full bodies that contain credentials
 
 ## Health
 
-| Endpoint | Makna |
+| Endpoint | Meaning |
 |----------|--------|
-| Liveness | Proses hidup |
-| Readiness | Siap terima traffic (DB reachable, migrasi selesai) |
+| Liveness | Process is alive |
+| Readiness | Ready for traffic (DB reachable, migrations complete) |
 
 ## Metrics (minimal)
 
-- Request rate, error rate, latency p95 untuk endpoint P0
-- Queue depth bila memakai job
+- Request rate, error rate, latency p95 for P0 endpoints
+- Queue depth when using jobs
 
 ## Anti-patterns
 
-- `console.log` tak berstruktur di produksi
-- Health yang selalu 200 meski DB down
-- Cardinality label metrik meledak (user id sebagai label)
+- Unstructured `console.log` in production
+- Health always returns 200 even when DB is down
+- Metric label cardinality explosion (user id as a label)

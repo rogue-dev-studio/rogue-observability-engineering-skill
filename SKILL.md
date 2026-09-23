@@ -17,35 +17,35 @@ This skill covers **application observability**. It does not replace `monitoring
 
 ## When to use
 
-- Structured log, request id, audit trail teknis
+- Structured logging, request id, technical audit trail
 - Health/readiness/liveness endpoints
-- Metrics dasar (latency, error rate) atau integrasi error tracker
-- Diagnosis kegagalan lokal/compose mendekati Phase 2
+- Basic metrics (latency, error rate) or error tracker integration
+- Local/compose failure diagnosis approaching Phase 2
 
 ## When not to use
 
-- Tracking usage Claude/CLI -> `monitoring`
-- Hanya UI empty-state -> `frontend-engineering`
-- Infra cluster penuh -> `infra-tools` / `cloud-tools`
+- Claude/CLI usage tracking -> `monitoring`
+- UI empty-state only -> `frontend-engineering`
+- Full cluster infra -> `infra-tools` / `cloud-tools`
 
 ## Procedure
 
-1. **Signals** - Tentukan log/metric/trace yang menjawab "apa rusak?".
-2. **Structure** - Log JSON/key-value konsisten; level benar (info/warn/error).
-3. **Correlation** - Request/correlation id across API -> job bila ada.
-4. **Safety** - Redact token, password, PII berlebih (selaras `security`).
-5. **Health** - Dependensi kritis (DB) dicek; bedakan liveness vs readiness bila ada.
-6. **Noise** - Hindari log per-row di hot path; sample atau aggregate.
-7. **Verify** - Reproduksi error terlihat di log dengan id; runbook singkat di docs bila E2E.
+1. **Signals** - Define log/metric/trace that answer "what broke?".
+2. **Structure** - Consistent JSON/key-value logs; correct level (info/warn/error).
+3. **Correlation** - Request/correlation id across API -> job when applicable.
+4. **Safety** - Redact tokens, passwords, excess PII (aligned with `security`).
+5. **Health** - Check critical dependencies (DB); distinguish liveness vs readiness when applicable.
+6. **Noise** - Avoid per-row logs on hot path; sample or aggregate.
+7. **Verify** - Reproduced error visible in log with id; short runbook in docs if E2E.
 
 Detail: `reference.md`.
 
 ## DoD
 
-- [ ] Log terstruktur pada path error utama
-- [ ] Tidak ada secret/PII berlebih di log
-- [ ] Healthcheck bermakna untuk dependensi P0
-- [ ] Cara membaca sinyal tertulis singkat (docs/handoff)
+- [ ] Structured logs on primary error paths
+- [ ] No secrets/excess PII in logs
+- [ ] Meaningful healthcheck for P0 dependencies
+- [ ] Short guide on reading signals written (docs/handoff)
 
 ## Attribution
 
